@@ -1,0 +1,48 @@
+:root {
+  --bg: #FFF7EF; --surface: #FFFFFF; --line: #EEDFD2;
+  --ink: #24182A; --ink-soft: #6B5A6E;
+  --pomegranate: #E23B4E; --saperavi: #7A3BC2; --gold: #F0A12E; --tkemali: #2FA45A; --blacksea: #1592AD;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #120E18; --surface: #1E1828; --line: #382E45;
+    --ink: #F8F2EC; --ink-soft: #BDB1C2;
+    --pomegranate: #FF5D6E; --saperavi: #B07CF0; --gold: #FFC25C; --tkemali: #5AD585; --blacksea: #3FC6E0;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 17px/1.6 "Nunito", ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header.top { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+header.top a { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+header.top img { width: 44px; height: 44px; border-radius: 11px; }
+header.top .name { font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+nav.lang { margin-left: auto; font-size: 15px; display: flex; gap: 6px; }
+nav.lang a { color: var(--ink-soft); text-decoration: none; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); }
+h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.02em; }
+h2 { font-size: 21px; margin: 32px 0 8px; }
+p, li { color: var(--ink); }
+.muted { color: var(--ink-soft); font-size: 15px; }
+a { color: var(--saperavi); }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+  padding: 20px; margin: 20px 0;
+}
+.pill {
+  display: inline-block; font-weight: 700; font-size: 14px; padding: 4px 12px; border-radius: 999px;
+  background: color-mix(in srgb, var(--tkemali) 15%, transparent); color: var(--tkemali);
+}
+.hero { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.hero img { width: 150px; height: auto; }
+.hero div { flex: 1 1 260px; }
+.stripe { height: 6px; border-radius: 3px; margin: 8px 0 24px;
+  background: linear-gradient(90deg, var(--pomegranate) 0 20%, var(--gold) 20% 40%, var(--tkemali) 40% 60%, var(--blacksea) 60% 80%, var(--saperavi) 80%); }
+ul { padding-left: 22px; }
+footer { margin-top: 48px; color: var(--ink-soft); font-size: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
+footer a { color: var(--ink-soft); }
+hr.lang-break { border: 0; border-top: 1px dashed var(--line); margin: 48px 0 8px; }
