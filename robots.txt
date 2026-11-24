@@ -1,0 +1,5 @@
+# Ara's website: every page may be read and listed by search engines.
+User-agent: *
+Allow: /
+
+Sitemap: https://aralearn.github.io/sitemap.xml
