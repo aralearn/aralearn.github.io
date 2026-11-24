@@ -1,4 +1,4 @@
-// Ara's website: two small jobs.
+// Ara's website: three small jobs.
 // 1. Old links ended in #pl when both languages shared a page; send them to the Polish page.
 (function () {
   if (location.hash === "#pl" && !location.pathname.startsWith("/pl")) {
@@ -29,3 +29,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { rootMargin: "-45% 0px -45% 0px" });
   steps.forEach(function (s) { io.observe(s); });
 });
+
+// 3. The theme switch: Light, Automatic (follows the device) or Dark, remembered on this device.
+// The colours follow data-theme on <html> (style.css); the app screenshots are <picture>s whose
+// dark version is chosen by the <source>'s media, so that is pointed at the choice too.
+(function () {
+  var root = document.documentElement;
+  function saved() {
+    try { var t = localStorage.getItem("ara-theme"); return t === "light" || t === "dark" ? t : "system"; }
+    catch (e) { return "system"; }
+  }
+  function apply(choice) {
+    if (choice === "system") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", choice);
+    var media = choice === "dark" ? "all" : choice === "light" ? "not all" : "(prefers-color-scheme: dark)";
+    document.querySelectorAll("picture source[srcset*='-dark.']").forEach(function (s) { s.media = media; });
+    document.querySelectorAll("[data-theme-choice]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.themeChoice === choice));
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    apply(saved());
+    document.querySelectorAll("[data-theme-choice]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var choice = b.dataset.themeChoice;
+        try { if (choice === "system") localStorage.removeItem("ara-theme"); else localStorage.setItem("ara-theme", choice); }
+        catch (e) {}
+        apply(choice);
+      });
+    });
+  });
+})();

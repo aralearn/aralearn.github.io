@@ -2,15 +2,27 @@
   --bg: #FFF7EF; --surface: #FFFFFF; --line: #EEDFD2;
   --ink: #24182A; --ink-soft: #6B5A6E;
   --pomegranate: #E23B4E; --saperavi: #7A3BC2; --gold: #F0A12E; --tkemali: #2FA45A; --blacksea: #1592AD;
+  --phone-shadow: rgba(36, 24, 42, 0.28); --tile-icon: #FFFFFF;
   color-scheme: light dark;
 }
+/* Dark colours: when the device is dark (unless the visitor chose Light), or when the visitor
+   chose Dark with the switch in the header (data-theme on <html>, saved by site.js). */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #120E18; --surface: #1E1828; --line: #382E45;
-    --ink: #F8F2EC; --ink-soft: #BDB1C2;
-    --pomegranate: #FF5D6E; --saperavi: #B07CF0; --gold: #FFC25C; --tkemali: #5AD585; --blacksea: #3FC6E0;
+  :root:not([data-theme="light"]) {
+  --bg: #120E18; --surface: #1E1828; --line: #382E45;
+  --ink: #F8F2EC; --ink-soft: #BDB1C2;
+  --pomegranate: #FF5D6E; --saperavi: #B07CF0; --gold: #FFC25C; --tkemali: #5AD585; --blacksea: #3FC6E0;
+  --phone-shadow: rgba(0, 0, 0, 0.6); --tile-icon: #120E18;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #120E18; --surface: #1E1828; --line: #382E45;
+  --ink: #F8F2EC; --ink-soft: #BDB1C2;
+  --pomegranate: #FF5D6E; --saperavi: #B07CF0; --gold: #FFC25C; --tkemali: #5AD585; --blacksea: #3FC6E0;
+  --phone-shadow: rgba(0, 0, 0, 0.6); --tile-icon: #120E18;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
@@ -22,7 +34,17 @@ header.top { display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
 header.top a { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
 header.top img { width: 44px; height: 44px; border-radius: 11px; }
 header.top .name { font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
-nav.lang { margin-left: auto; font-size: 15px; display: flex; gap: 6px; }
+header.top > a:first-child { margin-right: auto; }
+nav.lang { font-size: 15px; display: flex; gap: 6px; }
+/* Theme switch: Light, Automatic (follows the device), Dark. Shown only when the script runs. */
+.theme { display: none; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; margin-right: 6px; }
+.can-theme .theme { display: flex; }
+.theme button { display: grid; place-items: center; width: 30px; height: 28px; padding: 0; border: 0; border-radius: 7px;
+  background: none; color: var(--ink-soft); cursor: pointer; }
+.theme button:hover { color: var(--ink); }
+.theme button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.theme button:focus-visible, nav.lang a:focus-visible { outline: 2px solid var(--saperavi); outline-offset: 2px; }
+.theme svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 nav.lang a { color: var(--ink-soft); text-decoration: none; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); }
 h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.02em; }
 h2 { font-size: 21px; margin: 32px 0 8px; }
@@ -68,11 +90,10 @@ nav.lang a:hover:not([aria-current]) { border-color: var(--ink-soft); color: var
 /* iPhone frame: the screenshot sits under /frame.webp (978 x 2000), whose screen is see-through:
    the opening runs from x 52 to 926 and y 50 to 1950 with ~138px corners. The screenshot fills it top to
    bottom (so its Dynamic Island lies exactly under the frame's), with smaller corners hidden under the bezel. */
-.phone { position: relative; aspect-ratio: 978 / 2000; filter: drop-shadow(0 26px 28px rgba(36, 24, 42, 0.28)); }
+.phone { position: relative; aspect-ratio: 978 / 2000; filter: drop-shadow(0 26px 28px var(--phone-shadow)); }
 .phone .screen { position: absolute; left: 5.317%; top: 2.5%; width: 89.366%; height: 95%; border-radius: 13% / 6%; overflow: hidden; background: #000; }
 .phone .screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .phone .frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-@media (prefers-color-scheme: dark) { .phone { filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.6)); } }
 
 /* Hero: words on the left, three phones fanned out on the right */
 .hero2 { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: start; padding: 24px 0 32px; }
@@ -123,7 +144,7 @@ nav.lang a:hover:not([aria-current]) { border-color: var(--ink-soft); color: var
 .tile { border-radius: 24px; padding: 22px 22px 24px; background: color-mix(in srgb, var(--c) 13%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--c) 28%, transparent); }
 .tile svg { width: 40px; height: 40px; padding: 8px; border-radius: 12px; background: var(--c); color: #fff;
-  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  fill: none; stroke: currentColor; stroke-width: 1.8; color: var(--tile-icon); stroke-linecap: round; stroke-linejoin: round; }
 .tile[style*="--ink"] svg { color: var(--bg); }
 .tile h3 { font-size: 20px; margin: 14px 0 4px; font-weight: 800; }
 .tile p { margin: 0; color: var(--ink-soft); font-size: 16px; }

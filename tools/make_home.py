@@ -233,6 +233,30 @@ def shot_dir(shot):
     return "/shots"
 
 
+# Theme switch (Light, Automatic, Dark), the same on every page; site.js makes it work.
+THEME_LABELS = {
+    "en": dict(group="Theme", light="Light", system="Automatic (follows your device)", dark="Dark"),
+    "pl": dict(group="Motyw", light="Jasny", system="Automatyczny (jak w urządzeniu)", dark="Ciemny"),
+}
+THEME_ICONS = {
+    "light": '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6L6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/>',
+    "system": '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/>',
+    "dark": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+}
+# Runs before the page is drawn: a saved Light or Dark choice applies at once, with no flash.
+THEME_HEAD = ('<script>(function(){var d=document.documentElement;try{var t=localStorage.getItem("ara-theme");'
+              'if(t==="light"||t==="dark")d.setAttribute("data-theme",t)}catch(e){}d.classList.add("can-theme")})();</script>')
+
+
+def theme_switch(lang):
+    L = THEME_LABELS[lang]
+    buttons = "".join(
+        f'<button type="button" data-theme-choice="{k}" aria-pressed="false" aria-label="{L[k]}" title="{L[k]}">'
+        f'<svg viewBox="0 0 24 24" aria-hidden="true">{THEME_ICONS[k]}</svg></button>'
+        for k in ("light", "system", "dark"))
+    return f'<div class="theme" role="group" aria-label="{L["group"]}">{buttons}</div>'
+
+
 def phone(shot, alt, cls="", eager=False):
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
     d = shot_dir(shot)
@@ -250,6 +274,7 @@ def header(t, current):
     pl_href = current["pl"]
     return f'''<header class="top">
   <a class="brand" href="{t["path"]}"><img src="/icon.png" alt=""><span class="name">Ara</span></a>
+  {theme_switch(t["lang"])}
   <nav class="lang" aria-label="{t["lang_label"]}"><a href="{en_href}" hreflang="en" lang="en"{en_cur}>EN</a><a href="{pl_href}" hreflang="pl" lang="pl"{pl_cur}>PL</a></nav>
 </header>'''
 
@@ -295,6 +320,7 @@ def page(t):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap">
+{THEME_HEAD}
 <link rel="stylesheet" href="/style.css">
 <script src="/site.js" defer></script>
 </head>
