@@ -65,19 +65,14 @@ nav.lang a:hover:not([aria-current]) { border-color: var(--ink-soft); color: var
 .home .lead { font-size: 18px; color: var(--ink-soft); max-width: 46ch; }
 .hl { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--gold) 55%, transparent) 62% 92%, transparent 92%); padding: 0 2px; }
 
-/* iPhone frame: a near-black body with a thin light rim, side buttons, the real screenshot inside
-   (the screenshots already show the status bar and the Dynamic Island). */
-.phone { position: relative; aspect-ratio: 603 / 1311; padding: 3.4%; border-radius: 15.5% / 7.2%;
-  background: #0E0B12; box-shadow: inset 0 0 0 1.5px #4A4152, inset 0 0 0 4px #0E0B12, 0 30px 50px -18px rgba(36, 24, 42, 0.45), 0 10px 20px -10px rgba(36, 24, 42, 0.3); }
-.phone::before, .phone::after { content: ""; position: absolute; width: 1.4%; background: #2A2430; border-radius: 2px; }
-.phone::before { left: -1.1%; top: 19%; height: 7%; }
-.phone::after { right: -1.1%; top: 25%; height: 11%; }
-.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 12.6% / 5.9%; overflow: hidden; background: #000; }
-.phone img { display: block; width: 100%; height: 100%; object-fit: cover; }
-@media (prefers-color-scheme: dark) {
-  .tile svg { color: var(--bg); }
-  .phone { box-shadow: inset 0 0 0 1.5px #5B5163, inset 0 0 0 4px #0E0B12, 0 30px 60px -18px rgba(0, 0, 0, 0.7); }
-}
+/* iPhone frame: the screenshot sits under /frame.webp (978 x 2000), whose screen is see-through:
+   the opening runs from x 52 to 926 and y 50 to 1950 with ~138px corners. The screenshot fills it top to
+   bottom (so its Dynamic Island lies exactly under the frame's), with smaller corners hidden under the bezel. */
+.phone { position: relative; aspect-ratio: 978 / 2000; filter: drop-shadow(0 26px 28px rgba(36, 24, 42, 0.28)); }
+.phone .screen { position: absolute; left: 5.317%; top: 2.5%; width: 89.366%; height: 95%; border-radius: 13% / 6%; overflow: hidden; background: #000; }
+.phone .screen img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.phone .frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+@media (prefers-color-scheme: dark) { .phone { filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.6)); } }
 
 /* Hero: words on the left, three phones fanned out on the right */
 .hero2 { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; padding: 8px 0 32px; }
