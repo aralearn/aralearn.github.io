@@ -63,7 +63,7 @@ nav.lang a:hover:not([aria-current]) { border-color: var(--ink-soft); color: var
 .wrap.wide { max-width: 1120px; }
 .home h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 10px; font-weight: 900; }
 .home .lead { font-size: 18px; color: var(--ink-soft); max-width: 46ch; }
-.hl { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--gold) 55%, transparent) 62% 92%, transparent 92%); padding: 0 2px; }
+.hl { color: var(--pomegranate); }
 
 /* iPhone frame: the screenshot sits under /frame.webp (978 x 2000), whose screen is see-through:
    the opening runs from x 52 to 926 and y 50 to 1950 with ~138px corners. The screenshot fills it top to
@@ -75,7 +75,8 @@ nav.lang a:hover:not([aria-current]) { border-color: var(--ink-soft); color: var
 @media (prefers-color-scheme: dark) { .phone { filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.6)); } }
 
 /* Hero: words on the left, three phones fanned out on the right */
-.hero2 { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; padding: 8px 0 32px; }
+.hero2 { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: start; padding: 24px 0 32px; }
+/* Phones at the top, not centred on the words: the Polish text is longer and would push them down. */
 .hero2 h1 { font-size: clamp(38px, 5.6vw, 62px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 900; margin: 14px 0 16px; }
 .hero2 .pill { background: color-mix(in srgb, var(--saperavi) 14%, transparent); color: var(--saperavi); }
 .fan { position: relative; aspect-ratio: 1 / 1.02; }
