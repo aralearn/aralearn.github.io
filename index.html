@@ -5,52 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ara: Learn Georgian</title>
 <meta name="description" content="A colourful Georgian companion: learn from zero and use phrases in Georgia, offline. Try it in your browser; for iPhone soon.">
+<link rel="alternate" hreflang="en" href="https://aralearn.github.io/">
+<link rel="alternate" hreflang="pl" href="https://aralearn.github.io/pl/">
+<link rel="alternate" hreflang="x-default" href="https://aralearn.github.io/">
+<meta property="og:title" content="Ara: Learn Georgian">
+<meta property="og:description" content="A colourful Georgian companion: learn from zero and use phrases in Georgia, offline. Try it in your browser; for iPhone soon.">
+<meta property="og:image" content="https://aralearn.github.io/icon.png">
 <link rel="icon" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap">
 <link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
 </head>
-<body>
-<div class="wrap">
+<body class="home">
+<!-- Made by tools/make_home.py: change the words there, then run it again. -->
+<div class="wrap wide">
 <header class="top">
-  <a href="/"><img src="/icon.png" alt=""><span class="name">Ara</span></a>
-  <nav class="lang"><a href="#en">EN</a><a href="#pl">PL</a></nav>
+  <a class="brand" href="/"><img src="/icon.png" alt=""><span class="name">Ara</span></a>
+  <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="page">EN</a><a href="/pl/" hreflang="pl" lang="pl">PL</a></nav>
 </header>
 
 <main>
-<section id="en" lang="en">
-<div class="hero">
-  <img src="/mascot.png" alt="Ara the macaw waving">
-  <div>
-    <h1>Ara: Learn Georgian</h1>
-    <p>A colourful companion for people living in or visiting Georgia. <strong>Learn</strong> the alphabet and the language from zero, and <strong>use</strong> a phrasebook for real situations, offline, from day one.</p>
-    <p class="muted">For iPhone · coming soon · now in testing</p>
+<section class="hero2">
+  <div class="hero-text">
+    <span class="pill">For iPhone · coming soon · now in testing</span>
+    <h1>Learn Georgian.<br><span class="hl">Use it today.</span></h1>
+    <p class="lead">A colourful companion for people living in or visiting Georgia. <strong>Learn</strong> the alphabet and the language from zero, and <strong>use</strong> a phrasebook for real situations, offline, from day one.</p>
+    <div class="try">
+      <a class="cta" href="/app/">Try Ara in your browser</a>
+      <p class="muted">Free, on any phone or computer: the whole course and the phrasebook, with audio. No account; your progress stays on your device. On iPhone, tap Share, then Add to Home Screen, and Ara works offline like an app.</p>
+    </div>
   </div>
-</div>
-<div class="try">
-  <a class="cta" href="/app/">Try Ara in your browser</a>
-  <p class="muted">Free, on any phone or computer: the whole course and the phrasebook, with audio. No account; your progress stays on your device. On iPhone, tap Share, then Add to Home Screen, and Ara works offline like an app.</p>
-</div>
-<div class="stripe"></div>
-<p><a href="/privacy">Privacy policy</a> · <a href="/support">Support</a></p>
+  <div class="fan">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="phone left"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/alphabet-dark.webp"><img src="/shots/alphabet-light.webp" width="603" height="1311" alt="The alphabet chart in Ara" loading="lazy" decoding="async"></picture></div></div>
+    <div class="phone right"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/phrase-dark.webp"><img src="/shots/phrase-light.webp" width="603" height="1311" alt="A phrase card: ask the taxi to stop here, in Georgian, with audio" loading="lazy" decoding="async"></picture></div></div>
+    <div class="phone center"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/home-dark.webp"><img src="/shots/home-light.webp" width="603" height="1311" alt="Ara's Home screen: greeting, search, progress and the next lesson" fetchpriority="high" decoding="async"></picture></div></div>
+    <img class="mascot" src="/mascot.png" width="360" height="525" alt="Ara the macaw waving">
+  </div>
 </section>
 
-<hr class="lang-break">
+<div class="stripe"></div>
 
-<section id="pl" lang="pl">
-<h1>Ara: nauka gruzińskiego</h1>
-<p>Kolorowy towarzysz dla osób, które mieszkają w Gruzji albo ją odwiedzają. <strong>Ucz się</strong> alfabetu i języka od zera i <strong>korzystaj</strong> z rozmówek na prawdziwe sytuacje, bez internetu, od pierwszego dnia.</p>
-<p class="muted">Na iPhone'a · wkrótce · teraz w testach</p>
-<div class="try">
-  <a class="cta" href="/app/">Wypróbuj Arę w przeglądarce</a>
-  <p class="muted">Za darmo, na każdym telefonie i komputerze: cały kurs i rozmówki, z nagraniami. Bez konta; postępy zostają na Twoim urządzeniu. Na iPhonie stuknij „Udostępnij”, potem „Do ekranu początkowego”, a Ara zadziała bez internetu jak aplikacja.</p>
-</div>
-<p><a href="/privacy#pl">Polityka prywatności</a> · <a href="/support#pl">Pomoc</a></p>
+<section class="walk" id="whats-in-ara" data-active="0">
+  <div class="walk-head">
+    <h2>What's in Ara</h2>
+    <p class="lead">Two halves that work together: a course that starts at the first letter, and a phrasebook you can use the moment you land.</p>
+  </div>
+  <div class="walk-grid">
+    <div class="steps">
+    <article class="step is-active" data-step="0" style="--c: var(--pomegranate)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/letter-dark.webp"><img src="/shots/letter-light.webp" width="603" height="1311" alt="Learning a new letter, with its name, sound and audio" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Learn</span>
+      <h3>Start from the very first letter.</h3>
+      <p>Georgian has its own alphabet: 33 letters, no capitals, one sound each. Ara teaches them one at a time, with audio and a tip for every sound.</p>
+      <ul class="list"><li>33 letters, each with its sound</li><li>Reading from the first lesson</li><li>Already reading Georgian? Start further along</li></ul>
+    </article>
+    <article class="step" data-step="1" style="--c: var(--saperavi)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/lesson-dark.webp"><img src="/shots/lesson-light.webp" width="603" height="1311" alt="An exercise: what does პური (bread) mean?" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Lessons</span>
+      <h3>Short lessons that stay with you.</h3>
+      <p>59 lessons in six stages, from the first letter to the dinner table. 15 kinds of exercise: listen, match pairs, spell, build a sentence, choose your reply.</p>
+      <ul class="list"><li>Words you'll really use</li><li>Grammar in plain words</li><li>Tap any word to see its meaning</li><li>A wrong answer comes back at the end</li></ul>
+    </article>
+    <article class="step" data-step="2" style="--c: var(--tkemali)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/phrasebook-dark.webp"><img src="/shots/phrasebook-light.webp" width="603" height="1311" alt="The Use in Georgia tab: search, emergency phrases and situations" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Use in Georgia</span>
+      <h3>302 phrases for real situations.</h3>
+      <p>Ready from day one, with nothing to unlock: 11 situations, each with the words you need right now. Save a phrase and it joins your reviews.</p>
+      <ul class="list"><li>Transport</li><li>Shopping & bazaar</li><li>Restaurants & cafés</li><li>Health & pharmacy</li><li>Home & everyday</li><li>Emergencies, with 112</li></ul>
+    </article>
+    <article class="step" data-step="3" style="--c: var(--blacksea)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/show-dark.webp"><img src="/shots/show-light.webp" width="603" height="1311" alt="Show mode: a phrase in large Georgian letters to show someone" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Show mode</span>
+      <h3>Too shy to say it? Show it.</h3>
+      <p>One tap turns a phrase into big, clear Georgian to show a driver or a shopkeeper. Or play it aloud, slowly if you like.</p>
+      <ul class="list"><li>Big text, light or dark</li><li>Audio, normal or slow</li><li>A sounds-like spelling to say it yourself</li></ul>
+    </article>
+    <article class="step" data-step="4" style="--c: var(--gold)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/dialogue-dark.webp"><img src="/shots/dialogue-light.webp" width="603" height="1311" alt="A conversation at the bazaar between a seller and a customer" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Conversations</span>
+      <h3>Practise real conversations.</h3>
+      <p>21 everyday dialogues: at the bazaar, on a marshrutka, at a friend's for dinner. Read along, hear every line, then take a side and answer yourself.</p>
+      <ul class="list"><li>Taking a taxi</li><li>At the bazaar</li><li>At the pharmacy</li><li>Dinner at a friend's</li><li>Buying a SIM card</li><li>Calling 112</li></ul>
+    </article>
+    <article class="step" data-step="5" style="--c: var(--saperavi)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/search-dark.webp"><img src="/shots/search-light.webp" width="603" height="1311" alt="Searching for water: words and phrases with it" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Words</span>
+      <h3>Find any word, however you type it.</h3>
+      <p>Search in English, in Georgian or in Latin letters, and typos are fine. Words, phrases, situations and conversations, all in one place.</p>
+      <ul class="list"><li>Every word in the app, with its meaning</li><li>What you know and what's new</li></ul>
+    </article>
+    <article class="step" data-step="6" style="--c: var(--pomegranate)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/review-dark.webp"><img src="/shots/review-light.webp" width="603" height="1311" alt="Review: 14 items due today and the difficult words" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Review</span>
+      <h3>Remember it next week, too.</h3>
+      <p>Each word comes back just before you'd forget it: after a day, then three, then eight. Miss one and it returns in ten minutes.</p>
+      <ul class="list"><li>A few minutes a day</li><li>The difficult words, gathered for you</li></ul>
+    </article>
+    <article class="step" data-step="7" style="--c: var(--tkemali)">
+      <div class="art"><div class="phone "><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/progress-dark.webp"><img src="/shots/progress-light.webp" width="603" height="1311" alt="Progress: the stage Sign reader and what you can already do" loading="lazy" decoding="async"></picture></div></div></div>
+      <span class="chip">Progress</span>
+      <h3>From Just landed to Tamada.</h3>
+      <p>No points to collect. Ara shows what you can actually do, from reading shop signs to raising a toast at a supra.</p>
+      <ul class="list"><li>Just landed</li><li>Sign reader</li><li>Bazaar regular</li><li>Supra guest</li><li>Tamada's apprentice</li><li>Tamada</li></ul>
+    </article>
+    </div>
+    <div class="pin" aria-hidden="true">
+      <div class="pin-in">
+        <div class="stack"><div class="shot" data-shot="0" style="--c: var(--pomegranate)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/letter-dark.webp"><img src="/shots/letter-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="1" style="--c: var(--saperavi)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/lesson-dark.webp"><img src="/shots/lesson-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="2" style="--c: var(--tkemali)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/phrasebook-dark.webp"><img src="/shots/phrasebook-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="3" style="--c: var(--blacksea)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/show-dark.webp"><img src="/shots/show-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="4" style="--c: var(--gold)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/dialogue-dark.webp"><img src="/shots/dialogue-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="5" style="--c: var(--saperavi)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/search-dark.webp"><img src="/shots/search-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="6" style="--c: var(--pomegranate)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/review-dark.webp"><img src="/shots/review-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div><div class="shot" data-shot="7" style="--c: var(--tkemali)"><div class="phone flat"><div class="screen"><picture><source media="(prefers-color-scheme: dark)" srcset="/shots/progress-dark.webp"><img src="/shots/progress-light.webp" width="603" height="1311" alt="" loading="lazy" decoding="async"></picture></div></div></div></div>
+        <div class="ticks"><i style="--c: var(--pomegranate)"></i><i style="--c: var(--saperavi)"></i><i style="--c: var(--tkemali)"></i><i style="--c: var(--blacksea)"></i><i style="--c: var(--gold)"></i><i style="--c: var(--saperavi)"></i><i style="--c: var(--pomegranate)"></i><i style="--c: var(--tkemali)"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tiles-sec">
+  <h2>And a few more things</h2>
+  <div class="tiles">
+    <div class="tile" style="--c: var(--tkemali)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor"/><path d="M3 3l18 18"/></svg>
+      <h3>Works offline</h3>
+      <p>The course, the phrasebook and every audio clip are inside the app. No signal at the bazaar? No problem.</p>
+    </div>
+    <div class="tile" style="--c: var(--saperavi)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+      <h3>Nothing collected</h3>
+      <p>No account, no ads, no tracking. Your progress stays on your phone. <a href="/privacy">Privacy policy</a></p>
+    </div>
+    <div class="tile" style="--c: var(--blacksea)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+      <h3>Two voices</h3>
+      <p>Hear every word from Eka or Giorgi. They're synthetic voices, and Ara labels them so.</p>
+    </div>
+    <div class="tile" style="--c: var(--gold)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5h9M8 3.5v2M10.5 5.5c-.7 3.8-3 6.6-6.5 8.5M6 8.5c1.2 2.2 3 3.8 5 4.8"/><path d="M12.5 20.5l4-10 4 10M14 17h5"/></svg>
+      <h3>English or Polish</h3>
+      <p>All of Ara in your language. For Polish speakers, sounds and grammar are compared with Polish.</p>
+    </div>
+    <div class="tile" style="--c: var(--pomegranate)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 11V5.5a1.8 1.8 0 0 1 3.6 0V11l4.6 1a2 2 0 0 1 1.6 2.2l-.6 4.3a3 3 0 0 1-3 2.5h-4.2a3 3 0 0 1-2.4-1.2L5.4 15.6a1.7 1.7 0 0 1 2.6-2.2l1.5 1.6"/><path d="M6 6.5a5.5 5.5 0 0 1 10.4-1.5"/></svg>
+      <h3>Tap any word</h3>
+      <p>Every Georgian word in examples, phrases and conversations explains itself with one tap.</p>
+    </div>
+    <div class="tile" style="--c: var(--ink)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l9 16H3z"/><path d="M12 10v4.5"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+      <h3>Help in an emergency</h3>
+      <p>Emergency phrases right at the top of the phrasebook, and a button that calls 112.</p>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <h2>Say გამარჯობა to Georgian.</h2>
+  <p>Ara is free in your browser today, and coming to iPhone soon.</p>
+  <a class="cta" href="/app/">Try Ara in your browser</a>
+  <p class="muted">For iPhone · coming soon · now in testing</p>
 </section>
 </main>
 <footer>
-  <a href="/">Ara</a> · <a href="/privacy">Privacy / Prywatność</a> · <a href="/support">Support / Pomoc</a>
+  <a href="/">Ara</a> · <a href="/privacy">Privacy policy</a> · <a href="/support">Support</a> · <a href="mailto:ara.learn.app@gmail.com">ara.learn.app@gmail.com</a>
 </footer>
 </div>
 </body>

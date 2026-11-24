@@ -54,3 +54,107 @@ hr.lang-break { border: 0; border-top: 1px dashed var(--line); margin: 48px 0 8p
 .cta:hover { transform: translateY(1px); box-shadow: 0 4px 0 #A9213A; }
 .cta:active { transform: translateY(4px); box-shadow: 0 1px 0 #A9213A; }
 .try .muted { margin-top: 14px; }
+
+/* ---------- Language switch: the current language is filled ---------- */
+nav.lang a[aria-current="page"] { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 700; }
+nav.lang a:hover:not([aria-current]) { border-color: var(--ink-soft); color: var(--ink); }
+
+/* ---------- Home page (made by tools/make_home.py) ---------- */
+.wrap.wide { max-width: 1120px; }
+.home h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 10px; font-weight: 900; }
+.home .lead { font-size: 18px; color: var(--ink-soft); max-width: 46ch; }
+.hl { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--gold) 55%, transparent) 62% 92%, transparent 92%); padding: 0 2px; }
+
+/* iPhone frame: a near-black body with a thin light rim, side buttons, the real screenshot inside
+   (the screenshots already show the status bar and the Dynamic Island). */
+.phone { position: relative; aspect-ratio: 603 / 1311; padding: 3.4%; border-radius: 15.5% / 7.2%;
+  background: #0E0B12; box-shadow: inset 0 0 0 1.5px #4A4152, inset 0 0 0 4px #0E0B12, 0 30px 50px -18px rgba(36, 24, 42, 0.45), 0 10px 20px -10px rgba(36, 24, 42, 0.3); }
+.phone::before, .phone::after { content: ""; position: absolute; width: 1.4%; background: #2A2430; border-radius: 2px; }
+.phone::before { left: -1.1%; top: 19%; height: 7%; }
+.phone::after { right: -1.1%; top: 25%; height: 11%; }
+.phone .screen { position: relative; width: 100%; height: 100%; border-radius: 12.6% / 5.9%; overflow: hidden; background: #000; }
+.phone img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-color-scheme: dark) {
+  .tile svg { color: var(--bg); }
+  .phone { box-shadow: inset 0 0 0 1.5px #5B5163, inset 0 0 0 4px #0E0B12, 0 30px 60px -18px rgba(0, 0, 0, 0.7); }
+}
+
+/* Hero: words on the left, three phones fanned out on the right */
+.hero2 { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; padding: 8px 0 32px; }
+.hero2 h1 { font-size: clamp(38px, 5.6vw, 62px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 900; margin: 14px 0 16px; }
+.hero2 .pill { background: color-mix(in srgb, var(--saperavi) 14%, transparent); color: var(--saperavi); }
+.fan { position: relative; aspect-ratio: 1 / 1.02; }
+.fan .glow { position: absolute; inset: 8% 4% 4%; border-radius: 50%; filter: blur(40px); opacity: 0.55;
+  background: conic-gradient(from 200deg, var(--pomegranate), var(--gold), var(--tkemali), var(--blacksea), var(--saperavi), var(--pomegranate)); }
+.fan .phone { position: absolute; }
+.fan .center { width: 44%; left: 28%; top: 0; z-index: 2; }
+.fan .left { width: 37%; left: 2%; top: 11%; transform: rotate(-7deg); }
+.fan .right { width: 37%; right: 2%; top: 11%; transform: rotate(7deg); }
+.fan .mascot { position: absolute; width: 21%; height: auto; right: -2%; bottom: -4%; z-index: 3; transform: rotate(6deg);
+  filter: drop-shadow(0 8px 12px rgba(36, 24, 42, 0.25)); }
+
+/* What's in Ara: words scroll on the left, one phone stays put on the right and changes screen */
+.walk { padding: 40px 0 8px; }
+.walk-head { margin-bottom: 8px; }
+.walk-grid { display: grid; grid-template-columns: 1fr 0.8fr; gap: 56px; }
+.step { min-height: min(92vh, 760px); display: grid; align-content: center; gap: 12px; padding: 32px 0; }
+.js .step { opacity: 0.3; transition: opacity 0.35s; }
+.js .step.is-active { opacity: 1; }
+.step .art { display: none; }
+.chip { justify-self: start; font-weight: 800; font-size: 14px; letter-spacing: 0.02em; padding: 5px 14px; border-radius: 999px;
+  color: var(--ink); background: color-mix(in srgb, var(--c) 18%, transparent); display: inline-flex; align-items: center; gap: 8px; }
+.chip::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.step h3 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.08; letter-spacing: -0.02em; font-weight: 900; margin: 0; }
+.step p { margin: 0; color: var(--ink-soft); font-size: 18px; max-width: 44ch; }
+.step .list { list-style: none; padding: 0; margin: 4px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; max-width: 520px; }
+.step .list li { position: relative; padding-left: 20px; font-size: 16px; color: var(--ink); }
+.step .list li::before { content: ""; position: absolute; left: 2px; top: 0.55em; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.step .list li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.pin-in { position: sticky; top: max(24px, calc(50vh - 340px)); display: grid; justify-items: center; gap: 22px; padding: 24px 0; }
+.stack { position: relative; width: min(100%, 320px, calc((100vh - 120px) * 0.46)); aspect-ratio: 603 / 1311; }
+.stack::before { content: ""; position: absolute; inset: 6% -18% 0; border-radius: 50%; filter: blur(46px); opacity: 0.45;
+  background: var(--glow, var(--pomegranate)); transition: background 0.5s; }
+.stack .shot { position: absolute; inset: 0; opacity: 0; transform: translateY(14px) scale(0.98); transition: opacity 0.45s, transform 0.45s; }
+.stack .shot.on { opacity: 1; transform: none; }
+.stack .phone { width: 100%; }
+.ticks { display: flex; gap: 6px; }
+.ticks i { width: 18px; height: 5px; border-radius: 3px; background: var(--line); transition: width 0.3s, background 0.3s; }
+.ticks i.on { width: 40px; background: var(--c); }
+
+/* A few more things: coloured tiles */
+.tiles-sec { padding: 56px 0 8px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.tile { border-radius: 24px; padding: 22px 22px 24px; background: color-mix(in srgb, var(--c) 13%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--c) 28%, transparent); }
+.tile svg { width: 40px; height: 40px; padding: 8px; border-radius: 12px; background: var(--c); color: #fff;
+  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tile[style*="--ink"] svg { color: var(--bg); }
+.tile h3 { font-size: 20px; margin: 14px 0 4px; font-weight: 800; }
+.tile p { margin: 0; color: var(--ink-soft); font-size: 16px; }
+
+
+/* The end: one more invitation */
+.end { text-align: center; margin: 64px 0 0; padding: 44px 20px 40px; border-radius: 28px; background: var(--surface); border: 1px solid var(--line); }
+.end h2 { margin-bottom: 6px; }
+.end p { color: var(--ink-soft); margin: 0 0 22px; }
+.end .muted { margin: 18px 0 0; }
+
+@media (max-width: 860px) {
+  .hero2 { grid-template-columns: 1fr; gap: 12px; }
+  .fan { max-width: 460px; width: 100%; margin: 8px auto 0; }
+  .walk-grid { grid-template-columns: 1fr; gap: 0; }
+  .pin { display: none; }
+  .js .step, .step { opacity: 1; min-height: 0; padding: 36px 0 8px; }
+  .step .art { display: block; justify-self: center; width: min(68%, 260px); margin-bottom: 12px; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .tiles { grid-template-columns: 1fr; }
+  .step .list { grid-template-columns: 1fr; }
+  .step .list li:last-child:nth-child(odd) { grid-column: auto; }
+  .home .lead, .step p { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .step, .stack .shot, .ticks i, .stack::before { transition: none; }
+  .stack .shot { transform: none; }
+}
