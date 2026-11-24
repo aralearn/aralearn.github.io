@@ -5,8 +5,8 @@ Both come from one template so they always have the same sections and phones;
 only the words differ. Run after changing any text here:  python3 tools/make_home.py
 
 The iPhone frame is /frame.webp (978 x 2000, see-through screen; the owner's picture);
-the screenshot sits underneath it. Screenshots live in /shots as <name>-light.webp and <name>-dark.webp (603 x 1311,
-from the iPhone app's QA run); the page shows the dark one when the visitor's
+the screenshot sits underneath it. Screenshots live in /shots (English) and /shots/pl (Polish) as <name>-light.webp and
+<name>-dark.webp (603 x 1311, made by tools/make_shots.py from the iPhone app's QA run); the page shows the dark one when the visitor's
 device is in dark mode.
 """
 import os
@@ -223,12 +223,23 @@ ICONS = {  # simple 24 x 24 line icons, drawn here
 }
 
 
+LANG = "en"  # set by main() for each page
+
+
+def shot_dir(shot):
+    """Polish screens live in /shots/pl; until one exists, the English one is used."""
+    if LANG == "pl" and os.path.exists(os.path.join(ROOT, "shots", "pl", f"{shot}-light.webp")):
+        return "/shots/pl"
+    return "/shots"
+
+
 def phone(shot, alt, cls="", eager=False):
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    d = shot_dir(shot)
     alt_attr = f'alt="{alt}"' if alt else 'alt=""'
     return (f'<div class="phone {cls}"><div class="screen"><picture>'
-            f'<source media="(prefers-color-scheme: dark)" srcset="/shots/{shot}-dark.webp">'
-            f'<img src="/shots/{shot}-light.webp" width="603" height="1311" {alt_attr} {load} decoding="async">'
+            f'<source media="(prefers-color-scheme: dark)" srcset="{d}/{shot}-dark.webp">'
+            f'<img src="{d}/{shot}-light.webp" width="603" height="1311" {alt_attr} {load} decoding="async">'
             f'</picture></div><img class="frame" src="/frame.webp" width="978" height="2000" alt=""></div>')
 
 
@@ -355,7 +366,9 @@ def page(t):
 
 
 def main():
+    global LANG
     for t, out in [(EN, "index.html"), (PL, "pl/index.html")]:
+        LANG = t["lang"]
         path = os.path.join(ROOT, out)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
