@@ -9,7 +9,7 @@ polish-dark-<page>.png in Polish. Writes shots/<name>-<light|dark>.webp (English
 shots/pl/<name>-<light|dark>.webp (Polish), 603 x 1311. A Polish screen that is missing
 is skipped; the Polish page then falls back to the English one.
 
-The Simulator's own Dynamic Island is painted out (filled with the colour just below it):
+The Simulator's own Dynamic Island is painted out (blended from the colours above and below it):
 frame.webp draws its own, slightly narrower one.
 """
 import glob
@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = {
     "home": "home",
     "phrase": "phrase-pb-ak-gamicheret-tu-sheidzleba",
-    "alphabet": "alphabet",
+    "word": "word",  # the khachapuri word card (the alphabet is a sheet with blurred text behind the island)
     "letter": "ex-a1-teachLetter",
     "lesson": "ex-v7-multipleChoice",
     "phrasebook": "phrasebook",
@@ -41,15 +41,19 @@ CX, Y0, Y1, HALF, PAD = 603, 40, 153, 190, 4
 
 
 def erase_island(im):
+    """Fills the island with a vertical blend between the colours just above and just below it,
+    column by column (copying one row stretched any pattern behind it into streaks)."""
     p = im.load()
     r = (Y1 - Y0) / 2
     cy = (Y0 + Y1) / 2
-    src = Y1 + PAD + 3
-    for y in range(Y0 - PAD, Y1 + PAD + 1):
-        for x in range(CX - HALF - PAD, CX + HALF + PAD + 1):
+    top, bottom = Y0 - PAD - 2, Y1 + PAD + 2
+    for x in range(CX - HALF - PAD, CX + HALF + PAD + 1):
+        a, b = p[x, top], p[x, bottom]
+        for y in range(Y0 - PAD, Y1 + PAD + 1):
             dx = max(abs(x - CX) - (HALF - r), 0)
             if math.hypot(dx, abs(y - cy)) <= r + PAD:
-                p[x, y] = p[x, src]
+                t = (y - top) / (bottom - top)
+                p[x, y] = tuple(round(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
 
 def find(folder, lang, look, page):
