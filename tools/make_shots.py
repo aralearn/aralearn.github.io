@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = {
     "home": "home",
     "phrase": "phrase-pb-ak-gamicheret-tu-sheidzleba",
-    "word": "word",  # the khachapuri word card (the alphabet is a sheet with blurred text behind the island)
+    "alphabet": "alphabet",  # a sheet: blurred text behind the island leaves a faint smudge (owner: fine)
     "letter": "ex-a1-teachLetter",
     "lesson": "ex-v7-multipleChoice",
     "phrasebook": "phrasebook",

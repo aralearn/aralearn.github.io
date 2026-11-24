@@ -29,7 +29,7 @@ EN = dict(
     cta_note="Free, on any phone or computer: the whole course and the phrasebook, with audio. "
              "No account; your progress stays on your device. On iPhone, tap Share, then Add to "
              "Home Screen, and Ara works offline like an app.",
-    hero_alt=["A word card: khachapuri, with its sound and an example", "Ara's Home screen: greeting, search, progress and the next lesson",
+    hero_alt=["The alphabet chart in Ara", "Ara's Home screen: greeting, search, progress and the next lesson",
               "A phrase card: ask the taxi to stop here, in Georgian, with audio"],
     mascot_alt="Ara the macaw waving",
     walk_title="What's in Ara",
@@ -127,7 +127,7 @@ PL = dict(
     cta_note="Za darmo, na każdym telefonie i komputerze: cały kurs i rozmówki, z nagraniami. Bez "
              "konta; postępy zostają na Twoim urządzeniu. Na iPhonie stuknij „Udostępnij”, potem "
              "„Do ekranu początkowego”, a Ara zadziała bez internetu jak aplikacja.",
-    hero_alt=["Karta słowa: chaczapuri, z wymową i przykładem", "Ekran startowy Ary: powitanie, wyszukiwarka, postępy i następna lekcja",
+    hero_alt=["Tablica alfabetu w Arze", "Ekran startowy Ary: powitanie, wyszukiwarka, postępy i następna lekcja",
               "Karta zwrotu: prośba do taksówkarza, żeby się tu zatrzymał, po gruzińsku, z nagraniem"],
     mascot_alt="Ara, papuga ara, macha skrzydłem",
     walk_title="Co jest w Arze",
@@ -342,7 +342,7 @@ def page(t):
   </div>
   <div class="fan">
     <div class="glow" aria-hidden="true"></div>
-    {phone("word", alt[0], "left")}
+    {phone("alphabet", alt[0], "left")}
     {phone("phrase", alt[2], "right")}
     {phone("home", alt[1], "center", eager=True)}
     <img class="mascot" src="/mascot.png" width="360" height="525" alt="{t["mascot_alt"]}">
