@@ -182,8 +182,10 @@ function welcomePage(step) {
         ${fact("three", tr("Review"), tr("Every word comes back just before you'd forget it. Mistakes come back sooner."), "blacksea")}
         ${fact("bulb", tr("Understand why"), tr("Every rule explained with examples and comparisons. Tap a word to see why it looks the way it does."), "gold")}</div>`;
     case "voice":
-      return `<h1 class="ob-title">${esc(tr("Choose a voice"))}</h1><p class="soft center">${esc(tr("Every Georgian word and sentence in the app is spoken in this voice. Tap Listen to hear each one."))}</p>
-        <div class="voices">${["eka", "giorgi"].map((x) => `<div class="voice${x === audio.currentVoice() ? " on" : ""}">
+      return `${audio.VOICES.length > 1
+          ? `<h1 class="ob-title">${esc(tr("Choose a voice"))}</h1><p class="soft center">${esc(tr("Every Georgian word and sentence in the app is spoken in this voice. Tap Listen to hear each one."))}</p>`
+          : `<h1 class="ob-title">${esc(tr("Your Georgian voice"))}</h1><p class="soft center">${esc(tr("Every Georgian word and sentence in the app is spoken in this voice. Tap Listen to hear it."))}</p>`}
+        <div class="voices">${audio.VOICES.map((x) => `<div class="voice${x === audio.currentVoice() ? " on" : ""}">
           <button class="voice-pick" data-set="voice" data-value="${x}"><strong>${audio.voiceName(x)}</strong><small>${esc(x === "eka" ? tr("Female voice") : tr("Male voice"))}</small></button>
           <button class="listen" data-sample="${x}">${icon("speaker", { size: 16 })}${esc(tr("Listen"))}</button></div>`).join("")}</div>
         <p class="soft small center">${esc(tr("“Hello, how are you?”"))} · ${esc(tr("Synthetic voice"))}</p>`;
@@ -563,6 +565,7 @@ function exerciseView(ex) {
       return `<div class="teach-letter">
         <div class="letter-tile" role="img" aria-label="${esc(tr("The letter {0}, written {1}", l.name, l.latin))}">${sun("letter-sun")}<span class="ka">${esc(l.char)}</span></div>
         <div class="pill-row"><span class="pill c-saperavi">${esc(tr("Name: {0}", l.name))}</span><span class="pill c-blacksea">${esc(tr("Written {0}", l.latin))}</span>${speaker(l.char, { size: 36, slow: true })}</div>
+        ${sourceLabel(l.char) ? `<p class="soft small center letter-source">${esc(sourceLabel(l.char))}</p>` : ""}
         <div class="card sound-card"><h3>${icon("lips", { size: 26 })}<span>${esc(tr("Sounds like {0}", l.sound))}</span></h3>${l.tip ? `<p>${tapProse(l.tip)}</p>` : ""}</div>
         <div class="card example-row"><span class="ka">${esc(l.word)}</span><div><strong>${esc(l.wordLatin)}</strong><span class="soft">${esc(l.meaning)}</span></div>${speaker(l.word, { size: 36, slow: true })}</div>
       </div>`;

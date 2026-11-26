@@ -353,6 +353,7 @@ a:active, button:active:not(:disabled) { transform: scale(0.96); }
 .aa { font-weight: 900; font-size: 0.95rem; }
 .aa.big { font-size: 1.2rem; }
 .voices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.voices:has(> .voice:only-child) { grid-template-columns: minmax(0, 260px); justify-content: center; }
 .voice { border: 2px solid var(--line); border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
 .voice.on { border-color: var(--pomegranate); background: color-mix(in srgb, var(--pomegranate) 7%, transparent); }
 .voice-pick { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
@@ -691,6 +692,7 @@ html[data-text="large"] .stone-row { --swing: 0.6; }
 
 /* Teaching cards: a new letter (TeachLetterView), a new word (TeachWordView), a note. */
 .teach-letter, .teach-word-ex { display: flex; flex-direction: column; gap: 18px; }
+.teach-letter .letter-source { margin: -12px 0 0; }
 .letter-tile { position: relative; align-self: center; width: 210px; height: 210px; border-radius: 40px; display: grid; place-items: center; overflow: hidden;
   background: linear-gradient(135deg, #E23B4E, #7A3BC2); box-shadow: 0 10px 20px color-mix(in srgb, var(--pomegranate) 35%, transparent); }
 .letter-tile .ka { position: relative; color: #fff; font-size: 7.5rem; line-height: 1; animation: grow 0.5s cubic-bezier(.3, .7, .4, 1.5); }
