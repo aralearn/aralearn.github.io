@@ -6,7 +6,7 @@
 // - A new version replaces the old one as soon as it has installed; its files come from the
 //   network, never from the browser's own short-term copies (which could be the old ones).
 
-const VERSION = "6733ddf0d7";
+const VERSION = "5f27b12947";
 const SHELL = ["./", "app.css", "manifest.webmanifest", "audio/giorgi.json", "audio/sizes.json", "data/course-pl.json", "data/course.json", "data/glossary-pl.json", "data/glossary.json", "data/letters-pl.json", "data/letters.json", "data/phrasebook-pl.json", "data/phrasebook.json", "data/ui-pl.json", "data/vocabulary-pl.json", "data/vocabulary.json", "fonts/noto-sans-georgian-georgian-wght-normal.woff2", "fonts/nunito-latin-ext-wght-italic.woff2", "fonts/nunito-latin-ext-wght-normal.woff2", "fonts/nunito-latin-wght-italic.woff2", "fonts/nunito-latin-wght-normal.woff2", "icons/apple-touch-icon.png", "icons/favicon.svg", "icons/icon-192.png", "icons/icon-512.png", "icons/mascot-cheer.svg", "icons/mascot-hello.svg", "icons/mascot-think.svg", "icons/maskable-512.png", "js/app.js", "js/audio.js", "js/course.js", "js/engine.js", "js/i18n.js", "js/icons.js", "js/search.js", "js/store.js"];
 const SHELL_CACHE = `ara-shell-${VERSION}`;
 const AUDIO_CACHE = "ara-audio";
@@ -30,6 +30,8 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
   if (req.method !== "GET" || url.origin !== location.origin) return;
+  // "Check for updates" asks the server itself, never this device's copy.
+  if (req.cache === "no-store") { event.respondWith(fetch(req)); return; }
   if (url.pathname.endsWith(".mp3")) { event.respondWith(clip(req)); return; }
   if (req.mode === "navigate") {
     event.respondWith(caches.match("./", { cacheName: SHELL_CACHE }).then((r) => r || fetch(req)));
